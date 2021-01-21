@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-image: 01.jpg
+image: profile.jpg
 ---
 
 안녕하세요 전지훈 Sowoon이라고 합니다.
@@ -17,7 +17,7 @@ image: 01.jpg
 
 ***
 
-#### Austin scenester...
+#### 현재
 <small>2020 - </small>
 
 2020.06 -  
@@ -26,13 +26,18 @@ image: 01.jpg
 <small>2018 - 2020</small>
 
 2018.03.01 - 임관
+
 2018.06.26 - 2020.06.30 통신중대 운용소대장
+
 2020.06.30 - 전역
 
 #### 대학생
 <small>2014 - 2018</small>
 
 2014 -
+
 2015 -
+
 2016 -
+
 2017 -
