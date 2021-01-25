@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Find a connection with the reader
-date:   2018-07-24 15:01:35 +0300
+title:  테스트
+date:   2020-01-26 01:30:35 +030
 image:  02.jpg
 tags:   Resources
 ---
