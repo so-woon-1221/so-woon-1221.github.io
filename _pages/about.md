@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-image: profile.jpg
+image: sowoon.jpg
 ---
 
 안녕하세요 전지훈 Sowoon이라고 합니다.
