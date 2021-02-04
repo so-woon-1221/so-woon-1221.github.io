@@ -1,1 +1,1 @@
-Sitemap: /sitemap.xml
+Sitemap: https://so-woon-1221.github.io/sitemap.xml
