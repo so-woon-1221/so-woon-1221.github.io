@@ -29,6 +29,10 @@ logo                     : "/assets/image/logo.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
+comments:
+  provier: "disqus"
+  disqus:
+    shortname: "so-woon-1221.github-io"
 reCaptcha:
   siteKey                :
   secret                 :
@@ -241,6 +245,5 @@ defaults:
       author_profile: true
       read_time: true
       comments: true
-      share: true
       related: true
       show_date: true

@@ -1,11 +1,12 @@
 ---
 title: "github.io 블로그 시작"
-excerpt: "github 블로그 시작함"
+excerpt: "github 블로그 시작"
 
 categories:
  - Blog
 tags:
  - Blog
+ - 블로그
 last_modified_at: 2021-02-01T12:09:00
 ---
 

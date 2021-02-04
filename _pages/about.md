@@ -2,6 +2,7 @@
 title: "About"
 permalink: /about/
 layout: single
+author_profile: true
 ---
 
 ## Sowoon 블로그
