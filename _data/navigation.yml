@@ -4,3 +4,5 @@ main:
     url: /about/
   - title: "Category"
     url: /categories/
+  - title: "쇼핑몰"
+    url: /shoppingmall/

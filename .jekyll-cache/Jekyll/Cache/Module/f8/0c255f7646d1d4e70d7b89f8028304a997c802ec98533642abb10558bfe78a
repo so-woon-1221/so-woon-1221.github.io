@@ -1,4 +1,4 @@
-I"€
+I"ç
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -15,6 +15,8 @@
               <a href="/about/">About</a>
             </li><li class="masthead__menu-item">
               <a href="/categories/">Category</a>
+            </li><li class="masthead__menu-item">
+              <a href="/shoppingmall/">ì‡¼í•‘ëª°</a>
             </li></ul>
         
         <button class="search__toggle" type="button">
