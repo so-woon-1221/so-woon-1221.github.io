@@ -1,0 +1,9 @@
+I"<h2 id="1-계기">1. 계기</h2>
+
+<p>React와 Spring을 교재를 활용하여 2달정도 공부했다. <br />
+두 가지 교재 모두 최종적으로는 게시판을 만드는것이 목표였다.</p>
+
+<p>React를 공부할때는 프론트엔드는 <code class="language-plaintext highlighter-rouge">React</code>. 백엔드는 <code class="language-plaintext highlighter-rouge">Koa</code>를 활용했다. <br />
+Spring을 공부할때는 프론트엔드는 mustache, 백엔드는 Spring Boot를 활용했다.</p>
+
+:ET

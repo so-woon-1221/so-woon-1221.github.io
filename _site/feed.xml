@@ -1,7 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://so-woon-1221.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://so-woon-1221.github.io/" rel="alternate" type="text/html" /><updated>2021-02-06T01:06:28+09:00</updated><id>https://so-woon-1221.github.io/feed.xml</id><title type="html">BLOG</title><subtitle>An amazing website.</subtitle><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><entry><title type="html">쇼핑몰 소개</title><link href="https://so-woon-1221.github.io/shopping%20mall/%EC%87%BC%ED%95%91%EB%AA%B0%EA%B0%9C%EC%9A%94/" rel="alternate" type="text/html" title="쇼핑몰 소개" /><published>2021-02-06T00:00:00+09:00</published><updated>2021-02-06T21:20:00+09:00</updated><id>https://so-woon-1221.github.io/shopping%20mall/%EC%87%BC%ED%95%91%EB%AA%B0%EA%B0%9C%EC%9A%94</id><content type="html" xml:base="https://so-woon-1221.github.io/shopping%20mall/%EC%87%BC%ED%95%91%EB%AA%B0%EA%B0%9C%EC%9A%94/">&lt;h2 id=&quot;1-계기&quot;&gt;1. 계기&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://so-woon-1221.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://so-woon-1221.github.io/" rel="alternate" type="text/html" /><updated>2021-02-06T01:43:13+09:00</updated><id>https://so-woon-1221.github.io/feed.xml</id><title type="html">BLOG</title><subtitle>An amazing website.</subtitle><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><entry><title type="html">쇼핑몰 소개</title><link href="https://so-woon-1221.github.io/shopping%20mall/%EC%87%BC%ED%95%91%EB%AA%B0%EA%B0%9C%EC%9A%94/" rel="alternate" type="text/html" title="쇼핑몰 소개" /><published>2021-02-06T00:00:00+09:00</published><updated>2021-02-06T21:20:00+09:00</updated><id>https://so-woon-1221.github.io/shopping%20mall/%EC%87%BC%ED%95%91%EB%AA%B0%EA%B0%9C%EC%9A%94</id><content type="html" xml:base="https://so-woon-1221.github.io/shopping%20mall/%EC%87%BC%ED%95%91%EB%AA%B0%EA%B0%9C%EC%9A%94/">&lt;h2 id=&quot;1-계기&quot;&gt;1. 계기&lt;/h2&gt;
 
-&lt;p&gt;React와 Spring을 교재를 활용하여 2달정도 공부했다. &lt;br /&gt;
-두 가지 교재 모두 최종적으로는 게시판을 만드는것이 목표였다.&lt;/p&gt;</content><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><category term="Shopping mall" /><category term="Shopping mall" /><category term="쇼핑몰" /><category term="프로젝트" /><summary type="html">쇼핑몰 프로젝트 소개</summary></entry><entry><title type="html">github.io 블로그 시작</title><link href="https://so-woon-1221.github.io/blog/first-post/" rel="alternate" type="text/html" title="github.io 블로그 시작" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T21:09:00+09:00</updated><id>https://so-woon-1221.github.io/blog/first-post</id><content type="html" xml:base="https://so-woon-1221.github.io/blog/first-post/">&lt;h2 id=&quot;1-test&quot;&gt;1. test&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;React&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring&lt;/code&gt;을 교재를 활용하여 2달정도 공부했다. &lt;br /&gt;
+두 가지 교재 모두 최종적으로는 게시판을 만드는것이 목표였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;React&lt;/code&gt;를 공부할때는 프론트엔드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;React&lt;/code&gt;, 백엔드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Koa&lt;/code&gt;를 활용했다. &lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring&lt;/code&gt;을 공부할때는 프론트엔드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mustache&lt;/code&gt;, 백엔드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring Boot&lt;/code&gt;를 활용했다. &lt;br /&gt;
+결론적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;React&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring&lt;/code&gt;을 모두 활용해서 프로젝트를 진행하고 싶은 생각이 들었고 &lt;br /&gt;
+데이터베이스로는 여태껏 접해왔던 SQL같은 RDB보다 &lt;strong&gt;MongoDB&lt;/strong&gt;를 사용해보고싶었다.&lt;/p&gt;
+
+&lt;p&gt;이런저런 고민을 하다 평상시에 쇼핑도 자주 할 뿐더러 미니어쳐를 제작하는 친구가 있기에 &lt;br /&gt;
+그 작품들을 실을 수 있는 쇼핑몰을 제작하기로 결정했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-ui&quot;&gt;2. UI&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/image/UI.jpg&quot; alt=&quot;UI&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;가장 최초의 화면 구성은 이런식으로 계획했다. &lt;br /&gt;
+특별한 것은 없고 3개씩 줄지어 상품들을 표시하고 &lt;br /&gt;
+해당 상품을 클릭할 시 상세 페이지로 이동한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-진행상황&quot;&gt;3. 진행상황&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;메인화면 구현&lt;/li&gt;
+  &lt;li&gt;상세 페이지 구현&lt;/li&gt;
+  &lt;li&gt;상품 등록&lt;/li&gt;
+  &lt;li&gt;로그인 및 회원가입&lt;/li&gt;
+  &lt;li&gt;검색 기능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;기능이 추가될때마다 수정 예정&lt;/p&gt;</content><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><category term="Shopping mall" /><category term="Shopping mall" /><category term="쇼핑몰" /><category term="프로젝트" /><summary type="html">쇼핑몰 프로젝트 소개</summary></entry><entry><title type="html">github.io 블로그 시작</title><link href="https://so-woon-1221.github.io/blog/first-post/" rel="alternate" type="text/html" title="github.io 블로그 시작" /><published>2021-02-01T00:00:00+09:00</published><updated>2021-02-01T21:09:00+09:00</updated><id>https://so-woon-1221.github.io/blog/first-post</id><content type="html" xml:base="https://so-woon-1221.github.io/blog/first-post/">&lt;h2 id=&quot;1-test&quot;&gt;1. test&lt;/h2&gt;
 
 &lt;p&gt;github 블로그를 활용해 개발과 취미생활을 포스팅할 예정입니다.
 이 포스트는 테스트용입니다.&lt;/p&gt;</content><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><category term="Blog" /><category term="Blog" /><category term="블로그" /><summary type="html">github 블로그 시작</summary></entry></feed>
