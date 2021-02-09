@@ -10,4 +10,10 @@ var store = [{
         "tags": ["Shopping mall","쇼핑몰","프로젝트"],
         "url": "https://so-woon-1221.github.io/shoppingmallindex/",
         "teaser": null
+      },{
+        "title": "쇼핑몰 - 상품등록",
+        "excerpt":"1. 구현 화면     ","categories": ["Shopping mall"],
+        "tags": ["Shopping mall","쇼핑몰","프로젝트"],
+        "url": "https://so-woon-1221.github.io/shoppingmall/insert",
+        "teaser": null
       }]
