@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://so-woon-1221.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://so-woon-1221.github.io/" rel="alternate" type="text/html" /><updated>2021-02-15T17:08:07+09:00</updated><id>https://so-woon-1221.github.io/feed.xml</id><title type="html">BLOG</title><subtitle>An amazing website.</subtitle><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><entry><title type="html">쇼핑몰 - 상품등록</title><link href="https://so-woon-1221.github.io/shoppingmall/insert" rel="alternate" type="text/html" title="쇼핑몰 - 상품등록" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>https://so-woon-1221.github.io/shoppingmall/%EC%87%BC%ED%95%91%EB%AA%B0-%EC%83%81%ED%92%88%EB%93%B1%EB%A1%9D</id><content type="html" xml:base="https://so-woon-1221.github.io/shoppingmall/insert">&lt;h2 id=&quot;1-구현-화면&quot;&gt;1. 구현 화면&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://so-woon-1221.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://so-woon-1221.github.io/" rel="alternate" type="text/html" /><updated>2021-02-15T17:10:03+09:00</updated><id>https://so-woon-1221.github.io/feed.xml</id><title type="html">BLOG</title><subtitle>An amazing website.</subtitle><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><entry><title type="html">쇼핑몰 - 상품등록</title><link href="https://so-woon-1221.github.io/shoppingmall/insert" rel="alternate" type="text/html" title="쇼핑몰 - 상품등록" /><published>2021-02-09T00:00:00+09:00</published><updated>2021-02-09T00:00:00+09:00</updated><id>https://so-woon-1221.github.io/shoppingmall/%EC%87%BC%ED%95%91%EB%AA%B0-%EC%83%81%ED%92%88%EB%93%B1%EB%A1%9D</id><content type="html" xml:base="https://so-woon-1221.github.io/shoppingmall/insert">&lt;h2 id=&quot;1-구현-화면&quot;&gt;1. 구현 화면&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/shoppingmall-insert.jpeg&quot; alt=&quot;UI&quot; /&gt;&lt;/p&gt;
 
@@ -315,7 +315,7 @@
     &lt;ul&gt;
       &lt;li&gt;메인화면 구현&lt;/li&gt;
       &lt;li&gt;상세 페이지 구현&lt;/li&gt;
-      &lt;li&gt;상품 등록&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/shoppingmall/insert&quot;&gt;상품 등록&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;로그인 및 회원가입&lt;/li&gt;
       &lt;li&gt;검색 기능&lt;/li&gt;
       &lt;li&gt;서버와 데이터 교환&lt;/li&gt;
