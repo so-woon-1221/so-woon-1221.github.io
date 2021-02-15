@@ -1,0 +1,189 @@
+I"lU<h2 id="1-화면-구성">1. 화면 구성</h2>
+
+<p><img src="/assets/image/shoppingmall-infopage.png" alt="UI" /></p>
+
+<p>기본적인 화면 구성이다.<br />
+상단에는 헤더가 존재하며 미완성된 상태이긴 하지만 메인페이지로 이동 가능한 로고와<br />
+카테고리 메뉴, 검색창, 로그인 버튼이 있다.<br />
+하단에는 대표이미지로 설정한 이미지와 상품 이름, 가격, 태그가 표시된다.<br />
+구매와 장바구니 버튼이 존재하 그 하단엔 상세설명이 나오게 된다.</p>
+
+<h2 id="2-상세-설명">2. 상세 설명</h2>
+
+<ul>
+  <li>/modules/item.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createAction</span><span class="p">,</span> <span class="nx">handleActions</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">redux-actions</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">createRequestSaga</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">createRequestActionTypes</span><span class="p">,</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/createRequestSaga</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">itemAPI</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../lib/api/items</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">takeLatest</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">redux-saga/effects</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="p">[</span>
+  <span class="nx">READ_ITEM</span><span class="p">,</span>
+  <span class="nx">READ_ITEM_SUCCESS</span><span class="p">,</span>
+  <span class="nx">READ_ITEM_FAILURE</span><span class="p">,</span>
+<span class="p">]</span> <span class="o">=</span> <span class="nx">createRequestActionTypes</span><span class="p">(</span><span class="dl">'</span><span class="s1">item/READ_ITEM</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">UNLOAD_ITEM</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">item/UNLOAD_ITEM</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">readItem</span> <span class="o">=</span> <span class="nx">createAction</span><span class="p">(</span><span class="nx">READ_ITEM</span><span class="p">,</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">id</span><span class="p">);</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">unloadPost</span> <span class="o">=</span> <span class="nx">createAction</span><span class="p">(</span><span class="nx">UNLOAD_ITEM</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">readItemSaga</span> <span class="o">=</span> <span class="nx">createRequestSaga</span><span class="p">(</span><span class="nx">READ_ITEM</span><span class="p">,</span> <span class="nx">itemAPI</span><span class="p">.</span><span class="nx">readItem</span><span class="p">);</span>
+<span class="k">export</span> <span class="kd">function</span><span class="o">*</span> <span class="nx">readSaga</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">yield</span> <span class="nx">takeLatest</span><span class="p">(</span><span class="nx">READ_ITEM</span><span class="p">,</span> <span class="nx">readItemSaga</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">item</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="na">error</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">item</span> <span class="o">=</span> <span class="nx">handleActions</span><span class="p">(</span>
+  <span class="p">{</span>
+    <span class="p">[</span><span class="nx">READ_ITEM</span><span class="p">]:</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+      <span class="na">item</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="na">error</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="p">}),</span>
+    <span class="p">[</span><span class="nx">READ_ITEM_SUCCESS</span><span class="p">]:</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="p">{</span> <span class="na">payload</span><span class="p">:</span> <span class="nx">item</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+      <span class="nx">item</span><span class="p">,</span>
+    <span class="p">}),</span>
+    <span class="p">[</span><span class="nx">READ_ITEM_FAILURE</span><span class="p">]:</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="p">{</span> <span class="na">payload</span><span class="p">:</span> <span class="nx">error</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+      <span class="nx">error</span><span class="p">,</span>
+    <span class="p">}),</span>
+    <span class="p">[</span><span class="nx">UNLOAD_ITEM</span><span class="p">]:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">initialState</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">initialState</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">item</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">READ_ITEM</code> aciton이 실행되면 상품의 아이디를 활용해 서버에서 정보를 불러온다.</p>
+
+<ul>
+  <li>/container/ItemViewerContainer.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useDispatch</span><span class="p">,</span> <span class="nx">useSelector</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-redux</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">withRouter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-router-dom</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">readItem</span><span class="p">,</span> <span class="nx">unloadPost</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../modules/item</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ItemViewer</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../components/viewer/ItemViewer</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ItemViewerContainer</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">match</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">itemId</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">match</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">dispatch</span> <span class="o">=</span> <span class="nx">useDispatch</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">user</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useSelector</span><span class="p">(</span>
+    <span class="p">({</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">login</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <span class="na">item</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">item</span><span class="p">,</span>
+      <span class="na">error</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">error</span><span class="p">,</span>
+      <span class="na">loading</span><span class="p">:</span> <span class="nx">loading</span><span class="p">[</span><span class="dl">'</span><span class="s1">item/READ_ITEM</span><span class="dl">'</span><span class="p">],</span>
+      <span class="na">user</span><span class="p">:</span> <span class="nx">login</span><span class="p">.</span><span class="nx">user</span><span class="p">,</span>
+    <span class="p">}),</span>
+  <span class="p">);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">dispatch</span><span class="p">(</span><span class="nx">readItem</span><span class="p">(</span><span class="nx">itemId</span><span class="p">));</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">(</span><span class="nx">unloadPost</span><span class="p">());</span>
+    <span class="p">};</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">dispatch</span><span class="p">,</span> <span class="nx">itemId</span><span class="p">]);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">item</span> <span class="o">===</span> <span class="dl">''</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>오류<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ItemViewer</span> <span class="na">item</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="si">}</span> <span class="na">error</span><span class="p">=</span><span class="si">{</span><span class="nx">error</span><span class="si">}</span> <span class="na">loading</span><span class="p">=</span><span class="si">{</span><span class="nx">loading</span><span class="si">}</span> <span class="na">onCart</span><span class="p">=</span><span class="si">{</span><span class="nx">onCart</span><span class="si">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">withRouter</span><span class="p">(</span><span class="nx">ItemViewerContainer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>상세페이지의 접속 주소 형태는 <code class="language-plaintext highlighter-rouge">~/item/{itemid}</code>형식이다. 따라서 여기서 각 제품의 아이디를 불러올 수 있다.</p>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">readItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/item/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>서버에 접근하는 api의 설정이 이렇게 되어있으므로 id를 읽어서</p>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">itemId</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">match</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">itemId</code>에 저장하고</p>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">dispatch</span><span class="p">(</span><span class="nx">readItem</span><span class="p">(</span><span class="nx">itemId</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>이것을 활용해서 <code class="language-plaintext highlighter-rouge">readItem</code> 액션을 dispatch한다.<br />
+그리고 얻게된 item정보를 ItemViewer에 전달해준다.</p>
+
+<ul>
+  <li>/components/viewer/ItemViewer.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="kd">const</span> <span class="nx">ItemViewer</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">onCart</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span> <span class="o">&amp;&amp;</span> <span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">&lt;</span><span class="nc">ItemHeaderBlock</span><span class="p">&gt;</span>존재하지 않는 아이템입니다.<span class="p">&lt;/</span><span class="nc">ItemHeaderBlock</span><span class="p">&gt;;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nc">ItemHeaderBlock</span><span class="p">&gt;</span>오류<span class="p">&lt;/</span><span class="nc">ItemHeaderBlock</span><span class="p">&gt;;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">loading</span> <span class="o">||</span> <span class="o">!</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">let</span> <span class="p">{</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">tags</span><span class="p">,</span> <span class="nx">thumbnail</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">item</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ItemHeaderBlock</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">ItemHeaderWrapper</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">ItemImage</span> <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="nx">thumbnail</span><span class="si">}</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nc">Blank</span> <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nc">ItemHeader</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">name</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">SubInfo</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">price</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>
+              <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">SubInfo</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Tags</span><span class="p">&gt;</span>
+              <span class="si">{</span><span class="nx">tags</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">tag</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">tag</span><span class="dl">'</span><span class="si">}</span><span class="p">&gt;</span>#<span class="si">{</span><span class="nx">tag</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+              <span class="p">))</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nc">Tags</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Button</span><span class="p">&gt;</span>구매<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">orange</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">onCart</span><span class="si">}</span><span class="p">&gt;</span>
+              장바구니
+            <span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nc">ItemHeader</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">ItemHeaderWrapper</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">ItemHeaderBlock</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="cm">/*&lt;Spacer2 /&gt;*/</span><span class="si">}</span>
+      <span class="p">&lt;</span><span class="nc">ItemContentWrapper</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">ItemContentHeader</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>상세 설명<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">ItemContentHeader</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">ItemContent</span> <span class="na">dangerouslySetInnerHTML</span><span class="p">=</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">ItemContentWrapper</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>가져온 item정보를 활용해서 상세페이지를 구현한다.</p>
+:ET
