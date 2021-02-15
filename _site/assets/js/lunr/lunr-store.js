@@ -16,4 +16,10 @@ var store = [{
         "tags": ["Shopping mall","쇼핑몰","프로젝트"],
         "url": "https://so-woon-1221.github.io/shoppingmall/insert",
         "teaser": null
+      },{
+        "title": "쇼핑몰 - 서버 데이터 전송",
+        "excerpt":"1. 개요 axios를 사용하여 백엔드와 통신한다. 그러나 백엔드는 Spring으로 구성되어 8080포트를 사용하고 프론트엔드는 3000포트를 사용해 CORS 이슈가 발생하게 된다. 따라서 proxy 설정을 통 이를 해결한다. 2. 상세 설명 package.json ... \"proxy\": \"http://localhost:8080/\" ... 프록시 proxy 설정을 spirng의 포트인 8080으로 설정한다. /lib/api/client.js import axios from 'axios' const client = axios.create(); export...","categories": ["Shopping mall"],
+        "tags": ["Shopping mall","쇼핑몰","프로젝트"],
+        "url": "https://so-woon-1221.github.io/shoppingmall/axios",
+        "teaser": null
       }]

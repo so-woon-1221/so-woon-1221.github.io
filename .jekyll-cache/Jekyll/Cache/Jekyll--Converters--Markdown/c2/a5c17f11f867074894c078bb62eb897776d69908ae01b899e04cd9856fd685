@@ -1,0 +1,79 @@
+I"�!<h2 id="1-개요">1. 개요</h2>
+
+<p><code class="language-plaintext highlighter-rouge">axios</code>를 사용하여 백엔드와 통신한다.
+그러나 백엔드는 <code class="language-plaintext highlighter-rouge">Spring</code>으로 구성되어 8080포트를 사용하고 프론트엔드는 3000포트를 사용해<br />
+CORS 이슈가 발생하게 된다. 따라서 proxy 설정을 통 이를 해결한다.</p>
+
+<h2 id="2-상세-설명">2. 상세 설명</h2>
+
+<ul>
+  <li>package.json</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">...</span><span class="w">
+  </span><span class="nl">"proxy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/"</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>프록시 <code class="language-plaintext highlighter-rouge">proxy</code> 설정을 spirng의 포트인 8080으로 설정한다.</p>
+
+<ul>
+  <li>/lib/api/client.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">axios</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">client</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">axios</code>를 import해서 client를 생성해준다.<br />
+client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설정해주었다.</p>
+
+<ul>
+  <li>/lib/api/items.js - 상품관련 api</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">client</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./client</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// 상품 등록</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">inputItems</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">thumbnail</span><span class="p">,</span> <span class="nx">tags</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/input</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">thumbnail</span><span class="p">,</span> <span class="nx">tags</span> <span class="p">});</span>
+
+<span class="c1">// 상품 상세 정보 확인</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">readItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/item/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+<span class="c1">// 모든 상품 확인</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">listItem</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/item</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 상품 검색</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">searchItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">keyword</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/search/</span><span class="p">${</span><span class="nx">keyword</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<p>각 기능해서 쓰일 axios 요청을 설정했다.<br />
+백엔드에서 해당 기능을 처리할 수 있도록 구현해놓았다.</p>
+
+<ul>
+  <li>/lib/api/login.js - user 및 user 정보 관련 api</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">client</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./client</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">loginUser</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/login</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">registerUser</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">image</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">cart</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/register</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">image</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">cart</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">registerCheck</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">email</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/register/check</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">email</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">cartIn</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">itemId</span><span class="p">,</span> <span class="nx">user</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/user/cartIn</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">itemId</span><span class="p">,</span> <span class="nx">user</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">getCart</span> <span class="o">=</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/</span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">/cart`</span><span class="p">);</span>
+
+</code></pre></div></div>
+:ET

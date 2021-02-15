@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>쇼핑몰 소개 - BLOG</title>
-<meta name="description" content="쇼핑몰 프로젝트 소개">
+<!-- begin _includes/seo.html --><title>쇼핑몰 - 서버 데이터 전송 - BLOG</title>
+<meta name="description" content="쇼핑몰 - 서버에 데이터 전송하는 과정">
 
 
   <meta name="author" content="Sowoon">
@@ -22,23 +22,21 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:title" content="쇼핑몰 소개">
-<meta property="og:url" content="https://so-woon-1221.github.io/shoppingmallindex/">
+<meta property="og:title" content="쇼핑몰 - 서버 데이터 전송">
+<meta property="og:url" content="https://so-woon-1221.github.io/shoppingmall/axios">
 
 
-  <meta property="og:description" content="쇼핑몰 프로젝트 소개">
-
-
-
+  <meta property="og:description" content="쇼핑몰 - 서버에 데이터 전송하는 과정">
 
 
 
 
-  <meta property="article:published_time" content="2021-02-06T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2021-02-06T21:20:00+09:00">
+  <meta property="article:published_time" content="2021-02-15T00:00:00+09:00">
+
+
 
 
 
@@ -47,7 +45,7 @@
   
 
 
-<link rel="canonical" href="https://so-woon-1221.github.io/shoppingmallindex/">
+<link rel="canonical" href="https://so-woon-1221.github.io/shoppingmall/axios">
 
 
 
@@ -292,15 +290,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="쇼핑몰 소개">
-    <meta itemprop="description" content="쇼핑몰 프로젝트 소개">
-    <meta itemprop="datePublished" content="2021-02-06T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2021-02-06T21:20:00+09:00">
+    <meta itemprop="headline" content="쇼핑몰 - 서버 데이터 전송">
+    <meta itemprop="description" content="쇼핑몰 - 서버에 데이터 전송하는 과정">
+    <meta itemprop="datePublished" content="2021-02-15T00:00:00+09:00">
+    
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">쇼핑몰 소개
+          <h1 id="page-title" class="page__title" itemprop="headline">쇼핑몰 - 서버 데이터 전송
 </h1>
           
 
@@ -309,7 +307,7 @@
       
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        <time datetime="2021-02-06T00:00:00+09:00">February 6, 2021</time>
+        <time datetime="2021-02-15T00:00:00+09:00">February 15, 2021</time>
       </span>
     
 
@@ -322,7 +320,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
@@ -337,57 +335,89 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-계기">1. 계기</a></li><li><a href="#2-ui">2. UI</a></li><li><a href="#3-진행상황">3. 진행상황</a></li></ul>
+              <ul class="toc__menu"><li><a href="#1-개요">1. 개요</a></li><li><a href="#2-상세-설명">2. 상세 설명</a></li></ul>
 
             </nav>
           </aside>
         
-        <p>링크 <br />
-<a href="https://github.com/so-woon-1221/ShoppingMall">Github</a></p>
+        <h2 id="1-개요">1. 개요</h2>
 
-<h2 id="1-계기">1. 계기</h2>
+<p><code class="language-plaintext highlighter-rouge">axios</code>를 사용하여 백엔드와 통신한다.
+그러나 백엔드는 <code class="language-plaintext highlighter-rouge">Spring</code>으로 구성되어 8080포트를 사용하고 프론트엔드는 3000포트를 사용해<br />
+CORS 이슈가 발생하게 된다. 따라서 proxy 설정을 통 이를 해결한다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">React</code>와 <code class="language-plaintext highlighter-rouge">Spring</code>을 교재를 활용하여 2달정도 공부했다. <br />
-두 가지 교재 모두 최종적으로는 게시판을 만드는것이 목표였다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">React</code>를 공부할때는 프론트엔드는 <code class="language-plaintext highlighter-rouge">React</code>, 백엔드는 <code class="language-plaintext highlighter-rouge">Koa</code>를 활용했다. <br />
-<code class="language-plaintext highlighter-rouge">Spring</code>을 공부할때는 프론트엔드는 <code class="language-plaintext highlighter-rouge">mustache</code>, 백엔드는 <code class="language-plaintext highlighter-rouge">Spring Boot</code>를 활용했다. <br />
-결론적으로 <code class="language-plaintext highlighter-rouge">React</code>와 <code class="language-plaintext highlighter-rouge">Spring</code>을 모두 활용해서 프로젝트를 진행하고 싶은 생각이 들었고 <br />
-데이터베이스로는 여태껏 접해왔던 SQL같은 RDB보다 <strong>MongoDB</strong>를 사용해보고싶었다.</p>
-
-<p>이런저런 고민을 하다 평상시에 쇼핑도 자주 할 뿐더러 미니어쳐를 제작하는 친구가 있기에 <br />
-그 작품들을 실을 수 있는 쇼핑몰을 제작하기로 결정했다.</p>
-
-<h2 id="2-ui">2. UI</h2>
-
-<p><img src="/assets/image/UI.jpg" alt="UI" /></p>
-
-<p>가장 최초의 화면 구성은 이런식으로 계획했다. <br />
-특별한 것은 없고 3개씩 줄지어 상품들을 표시하고 <br />
-해당 상품을 클릭할 시 상세 페이지로 이동한다.</p>
-
-<h2 id="3-진행상황">3. 진행상황</h2>
+<h2 id="2-상세-설명">2. 상세 설명</h2>
 
 <ul>
-  <li>프론트엔드
-    <ul>
-      <li>메인화면 구현</li>
-      <li>상세 페이지 구현</li>
-      <li><a href="/shoppingmall/insert">상품 등록</a></li>
-      <li>로그인 및 회원가입</li>
-      <li>검색 기능</li>
-      <li>서버와 데이터 교환</li>
-    </ul>
-  </li>
-  <li>백엔드
-    <ul>
-      <li>DB구성</li>
-    </ul>
-  </li>
+  <li>package.json</li>
 </ul>
 
-<hr />
-<p>기능이 추가될때마다 수정 예정</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">...</span><span class="w">
+  </span><span class="nl">"proxy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/"</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>프록시 <code class="language-plaintext highlighter-rouge">proxy</code> 설정을 spirng의 포트인 8080으로 설정한다.</p>
+
+<ul>
+  <li>/lib/api/client.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">axios</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">client</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">axios</code>를 import해서 client를 생성해준다.<br />
+client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설정해주었다.</p>
+
+<ul>
+  <li>/lib/api/items.js - 상품관련 api</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">client</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./client</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// 상품 등록</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">inputItems</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">thumbnail</span><span class="p">,</span> <span class="nx">tags</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/input</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">thumbnail</span><span class="p">,</span> <span class="nx">tags</span> <span class="p">});</span>
+
+<span class="c1">// 상품 상세 정보 확인</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">readItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/item/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+<span class="c1">// 모든 상품 확인</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">listItem</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/item</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 상품 검색</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">searchItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">keyword</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/search/</span><span class="p">${</span><span class="nx">keyword</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<p>각 기능해서 쓰일 axios 요청을 설정했다.<br />
+백엔드에서 해당 기능을 처리할 수 있도록 구현해놓았다.</p>
+
+<ul>
+  <li>/lib/api/login.js - user 및 user 정보 관련 api</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">client</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./client</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">loginUser</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/login</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">registerUser</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">image</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">cart</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/register</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">image</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">cart</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">registerCheck</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">email</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/register/check</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">email</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">cartIn</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">itemId</span><span class="p">,</span> <span class="nx">user</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/user/cartIn</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">itemId</span><span class="p">,</span> <span class="nx">user</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">getCart</span> <span class="o">=</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/</span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">/cart`</span><span class="p">);</span>
+
+</code></pre></div></div>
 
         
       </section>
@@ -444,7 +474,7 @@
 
 
         
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-02-06">February 6, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-02-15T00:00:00+09:00">February 15, 2021</time></p>
 
 
       </footer>
@@ -454,12 +484,11 @@
       
   <nav class="pagination">
     
-      <a href="/blog/first-post/" class="pagination--pager" title="github.io 블로그 시작
+      <a href="/shoppingmall/insert" class="pagination--pager" title="쇼핑몰 - 상품등록
 ">Previous</a>
     
     
-      <a href="/shoppingmall/insert" class="pagination--pager" title="쇼핑몰 - 상품등록
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -473,52 +502,6 @@
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/shoppingmall/axios" rel="permalink">쇼핑몰 - 서버 데이터 전송
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        <time datetime="2021-02-15T00:00:00+09:00">February 15, 2021</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">쇼핑몰 - 서버에 데이터 전송하는 과정
-</p>
-  </article>
-</div>
-
         
           
 
@@ -553,7 +536,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          3 minute read
         
       </span>
     
@@ -561,6 +544,52 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">쇼핑몰 - 상품등록 구현과정
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/shoppingmallindex/" rel="permalink">쇼핑몰 소개
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        <time datetime="2021-02-06T00:00:00+09:00">February 6, 2021</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">쇼핑몰 프로젝트 소개
 </p>
   </article>
 </div>

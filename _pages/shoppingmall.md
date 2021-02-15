@@ -13,4 +13,6 @@ author_profile: true
    
    
 
-1.[  쇼핑몰개요](/shoppingmallindex)
+1. [  쇼핑몰개요](/shoppingmallindex)
+2. [ 쇼핑몰 - 서버와 데이터 교환](/shoppingmall/axios)
+3. [ 쇼핑몰 - 상품 등록](/shoppingmall/insert)
