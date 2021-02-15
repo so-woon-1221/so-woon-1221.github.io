@@ -6,13 +6,13 @@ var store = [{
         "teaser": null
       },{
         "title": "쇼핑몰 소개",
-        "excerpt":"1. 계기 React와 Spring을 교재를 활용하여 2달정도 공부했다. 두 가지 교재 모두 최종적으로는 게시판을 만드는것이 목표였다. React를 공부할때는 프론트엔드는 React, 백엔드는 Koa를 활용했다. Spring을 공부할때는 프론트엔드는 mustache, 백엔드는 Spring Boot를 활용했다. 결론적으로 React와 Spring을 모두 활용해서 프로젝트를 진행하고 싶은 생각이 들었고 데이터베이스로는 여태껏 접해왔던 SQL같은 RDB보다 MongoDB를 사용해보고싶었다. 이런저런 고민을...","categories": ["Shopping mall"],
+        "excerpt":"링크 Github 1. 계기 React와 Spring을 교재를 활용하여 2달정도 공부했다. 두 가지 교재 모두 최종적으로는 게시판을 만드는것이 목표였다. React를 공부할때는 프론트엔드는 React, 백엔드는 Koa를 활용했다. Spring을 공부할때는 프론트엔드는 mustache, 백엔드는 Spring Boot를 활용했다. 결론적으로 React와 Spring을 모두 활용해서 프로젝트를 진행하고 싶은 생각이 들었고 데이터베이스로는 여태껏 접해왔던 SQL같은 RDB보다 MongoDB를 사용해보고싶었다....","categories": ["Shopping mall"],
         "tags": ["Shopping mall","쇼핑몰","프로젝트"],
         "url": "https://so-woon-1221.github.io/shoppingmallindex/",
         "teaser": null
       },{
         "title": "쇼핑몰 - 상품등록",
-        "excerpt":"1. 구현 화면     ","categories": ["Shopping mall"],
+        "excerpt":"1. 구현 화면 간단한 화면 구성이다. 제일 먼저 상품의 이름을 입력할 수 있다. 그 아래에는 Quill Editor를 활용하여 상세정보를 입력할 수 있다. 오른쪽 하단엔 가격정보를 입력할 수 있는 칸이 있으며 Number Format을 활용해 자동으로 세자리마다 “,” 삽입, “원” 삽입 기능을 구현했다. 상품의 대표 이미지는 추후 메인화면에 나타나질 thumbnail이다. 상품 검색에...","categories": ["Shopping mall"],
         "tags": ["Shopping mall","쇼핑몰","프로젝트"],
         "url": "https://so-woon-1221.github.io/shoppingmall/insert",
         "teaser": null

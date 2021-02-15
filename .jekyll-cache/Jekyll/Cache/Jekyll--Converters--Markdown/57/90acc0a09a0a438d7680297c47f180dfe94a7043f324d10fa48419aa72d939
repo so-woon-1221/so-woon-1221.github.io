@@ -1,0 +1,205 @@
+I"rE<h2 id="1-구현-화면">1. 구현 화면</h2>
+
+<p><img src="/assets/image/shoppingmall-insert.jpeg" alt="UI" /></p>
+
+<p>간단한 화면 구성이다.<br />
+제일 먼저 상품의 이름을 입력할 수 있다.<br />
+그 아래에는 <code class="language-plaintext highlighter-rouge">Quill Editor</code>를 활용하여 상세정보를 입력할 수 있다.<br />
+오른쪽 하단엔 가격정보를 입력할 수 있는 칸이 있으며 <code class="language-plaintext highlighter-rouge">Number Format</code>을 활용해<br />
+자동으로 세자리마다 “,” 삽입, “원” 삽입 기능을 구현했다.<br />
+상품의 대표 이미지는 추후 메인화면에 나타나질 thumbnail이다.<br />
+상품 검색에 도움이 될 수 있는 태그를 추가할 수 있다.</p>
+
+<h2 id="2-상세설명">2. 상세설명</h2>
+
+<p>기본적으로 <code class="language-plaintext highlighter-rouge">redux</code>로 state를 관리한다.<br />
+각각의 input들이 바뀔때마다 state에 변경사항이 저장되며<br />
+추가 버튼을 누를 시 해당 state들이 서버에 저장 요청을 보내게 된다.</p>
+
+<ul>
+  <li>Editor.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nc">EditorBlock</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">TitleInput</span>
+		 <span class="na">placeholder</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">상품명을 입력하세요</span><span class="dl">'</span><span class="si">}</span>
+		 <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChangeName</span><span class="si">}</span>
+		 <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">name</span><span class="si">}</span>
+		 <span class="p">/&gt;</span>
+	<span class="p">&lt;</span><span class="nc">QuillWrapper</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">div</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">quillElement</span><span class="si">}</span> <span class="p">/&gt;</span>
+	<span class="p">&lt;/</span><span class="nc">QuillWrapper</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nc">PriceInput</span>
+		<span class="na">thousandSeparator</span><span class="p">=</span><span class="si">{</span><span class="kc">true</span><span class="si">}</span>
+		<span class="na">suffix</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">원</span><span class="dl">'</span><span class="si">}</span>
+		<span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">price</span><span class="si">}</span>
+		<span class="na">placeholder</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">가격을 입력하세요</span><span class="dl">'</span><span class="si">}</span>
+		<span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChangePrice</span><span class="si">}</span>
+	<span class="p">/&gt;</span>
+	<span class="p">&lt;/</span><span class="nc">EditorBlock</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>PriceInput에 <code class="language-plaintext highlighter-rouge">Number Format</code>을 적용했다.</p>
+
+<ul>
+  <li>ImageInput.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">ImageInput</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">thumbnail</span><span class="p">,</span> <span class="nx">onChangeField</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">image</span><span class="p">,</span> <span class="nx">setImage</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">previewURL</span><span class="p">,</span> <span class="nx">setPreviewURL</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">onFileSelected</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+  	<span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="kd">let</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+
+		<span class="nx">reader</span><span class="p">.</span><span class="nx">onloadend</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="kd">const</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">reader</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nx">temp</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">setPreviewURL</span><span class="p">(</span><span class="nx">temp</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+			<span class="nx">onChangeField</span><span class="p">({</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">thumbnail</span><span class="dl">'</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="nx">temp</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="p">});</span>
+			<span class="p">}</span>
+		<span class="p">};</span>
+
+		<span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+			<span class="nx">reader</span><span class="p">.</span><span class="nx">readAsDataURL</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+			<span class="nx">setImage</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+			<span class="p">}</span>
+		<span class="p">},</span>
+	<span class="p">[</span><span class="nx">image</span><span class="p">,</span> <span class="nx">previewURL</span><span class="p">],</span>
+	<span class="p">);</span>
+
+
+	<span class="k">return</span> <span class="p">(</span>
+		<span class="p">&lt;</span><span class="nc">ImageInputBlock</span><span class="p">&gt;</span>
+			<span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>대표 이미지 설정<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+			<span class="p">&lt;</span><span class="nc">ImageBlock</span><span class="p">&gt;</span>
+				<span class="p">&lt;</span><span class="nc">ImageInputForm</span>
+					<span class="na">type</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">file</span><span class="dl">'</span><span class="si">}</span>
+					<span class="na">accept</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">image/*</span><span class="dl">'</span><span class="si">}</span>
+					<span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onFileSelected</span><span class="si">}</span>
+				<span class="p">/&gt;</span>
+				<span class="si">{</span><span class="nx">previewURL</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nc">ImagePreview</span> <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="nx">thumbnail</span><span class="si">}</span> <span class="p">/&gt;</span><span class="si">}</span>
+			<span class="p">&lt;/</span><span class="nc">ImageBlock</span><span class="p">&gt;</span>
+		<span class="p">&lt;/</span><span class="nc">ImageInputBlock</span><span class="p">&gt;</span>
+	<span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>이미지 선택 시 미리보기가 나온다.</p>
+
+<ul>
+  <li>TagBox.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">TagBox</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">tags</span><span class="p">,</span> <span class="nx">onChangeTags</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">input</span><span class="p">,</span> <span class="nx">setInput</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">localTags</span><span class="p">,</span> <span class="nx">setLocalTags</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]);</span>
+
+  <span class="kd">const</span> <span class="nx">insertTag</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">tag</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">tag</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">localTags</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">tag</span><span class="p">))</span> <span class="k">return</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">nextTags</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">localTags</span><span class="p">,</span> <span class="nx">tag</span><span class="p">];</span>
+      <span class="nx">setLocalTags</span><span class="p">(</span><span class="nx">nextTags</span><span class="p">);</span>
+      <span class="nx">onChangeTags</span><span class="p">(</span><span class="nx">nextTags</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="p">[</span><span class="nx">localTags</span><span class="p">,</span> <span class="nx">onChangeTags</span><span class="p">],</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">onRemove</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">tag</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">nextTags</span> <span class="o">=</span> <span class="nx">localTags</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">t</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">t</span> <span class="o">!==</span> <span class="nx">tag</span><span class="p">);</span>
+      <span class="nx">setLocalTags</span><span class="p">(</span><span class="nx">nextTags</span><span class="p">);</span>
+      <span class="nx">onChangeTags</span><span class="p">(</span><span class="nx">nextTags</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="p">[</span><span class="nx">localTags</span><span class="p">,</span> <span class="nx">onChangeTags</span><span class="p">],</span>
+  <span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">onChange</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setInput</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+  <span class="kd">const</span> <span class="nx">onSubmit</span> <span class="o">=</span> <span class="nx">useCallback</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="nx">insertTag</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">trim</span><span class="p">());</span>
+      <span class="nx">setInput</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="p">[</span><span class="nx">input</span><span class="p">,</span> <span class="nx">insertTag</span><span class="p">],</span>
+  <span class="p">);</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setLocalTags</span><span class="p">(</span><span class="nx">tags</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">tags</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;&gt;</span>
+      <span class="p">&lt;</span><span class="nc">TagBoxBlock</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>태그<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">TagForm</span> <span class="na">onSubmit</span><span class="p">=</span><span class="si">{</span><span class="nx">onSubmit</span><span class="si">}</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">input</span>
+            <span class="na">placeholder</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">태그를 입력하세요</span><span class="dl">'</span><span class="si">}</span>
+            <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">input</span><span class="si">}</span>
+            <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">onChange</span><span class="si">}</span>
+          <span class="p">/&gt;</span>
+          <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">submit</span><span class="dl">'</span><span class="si">}</span><span class="p">&gt;</span>추가<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">TagForm</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">TagList</span> <span class="na">tags</span><span class="p">=</span><span class="si">{</span><span class="nx">localTags</span><span class="si">}</span> <span class="na">onRemove</span><span class="p">=</span><span class="si">{</span><span class="nx">onRemove</span><span class="si">}</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">TagBoxBlock</span><span class="p">&gt;</span>
+    <span class="p">&lt;/&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+<p>localTags가 변화하면서 화면에 표시되는 태그가 추가되며 이 state가 redux로 관리되어 DB에 저장된다.</p>
+
+<ul>
+  <li>InputActionButtons.js
+```react
+const InputActionButtonsContainer = ({ history }) =&gt; {
+  const dispatch = useDispatch();
+  const {
+ name,
+ content,
+ price,
+ thumbnail,
+ tags,
+ item,
+ itemError,
+  } = useSelector(({ items }) =&gt; ({
+ name: items.name,
+ content: items.content,
+ price: items.price,
+ thumbnail: items.thumbnail,
+ tags: items.tags,
+ item: items.item,
+ itemError: items.itemError,
+  }));</li>
+</ul>
+
+<p>const onPublish = () =&gt; {
+    dispatch(inputItem({ name, content, price, thumbnail, tags }));
+  };</p>
+
+<p>const onCancel = () =&gt; {
+    console.log(‘cancel’);
+    history.goBack();
+  };</p>
+
+<p>useEffect(() =&gt; {
+    if (item) {
+      history.push(<code class="language-plaintext highlighter-rouge">/</code>);
+      console.log(item);
+    }
+    if (itemError) {
+      console.log(itemError);
+    }
+  }, [history, item, itemError]);</p>
+
+<p>return &lt;InputActionButtons onPublish={onPublish} onCancel={onCancel} /&gt;;
+};
+```
+-</p>
+:ET

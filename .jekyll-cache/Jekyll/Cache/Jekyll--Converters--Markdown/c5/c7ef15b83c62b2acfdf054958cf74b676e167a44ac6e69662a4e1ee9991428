@@ -1,4 +1,7 @@
-I"�<h2 id="1-계기">1. 계기</h2>
+I"�<p>링크 <br />
+<a href="https://github.com/so-woon-1221/ShoppingMall">Github</a></p>
+
+<h2 id="1-계기">1. 계기</h2>
 
 <p><code class="language-plaintext highlighter-rouge">React</code>와 <code class="language-plaintext highlighter-rouge">Spring</code>을 교재를 활용하여 2달정도 공부했다. <br />
 두 가지 교재 모두 최종적으로는 게시판을 만드는것이 목표였다.</p>
@@ -22,11 +25,21 @@
 <h2 id="3-진행상황">3. 진행상황</h2>
 
 <ul>
-  <li>메인화면 구현</li>
-  <li>상세 페이지 구현</li>
-  <li>상품 등록</li>
-  <li>로그인 및 회원가입</li>
-  <li>검색 기능</li>
+  <li>프론트엔드
+    <ul>
+      <li>메인화면 구현</li>
+      <li>상세 페이지 구현</li>
+      <li>상품 등록</li>
+      <li>로그인 및 회원가입</li>
+      <li>검색 기능</li>
+      <li>서버와 데이터 교환</li>
+    </ul>
+  </li>
+  <li>백엔드
+    <ul>
+      <li>DB구성</li>
+    </ul>
+  </li>
 </ul>
 
 <hr />
