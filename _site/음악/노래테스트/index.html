@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>쇼핑몰 - 서버 데이터 전송 - BLOG</title>
-<meta name="description" content="쇼핑몰 - 서버에 데이터 전송하는 과정">
+<!-- begin _includes/seo.html --><title>나이값 - BLOG</title>
+<meta name="description" content="음악 첫번째 글">
 
 
   <meta name="author" content="Sowoon">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="BLOG">
-<meta property="og:title" content="쇼핑몰 - 서버 데이터 전송">
-<meta property="og:url" content="https://so-woon-1221.github.io/shoppingmall/axios">
+<meta property="og:title" content="나이값">
+<meta property="og:url" content="https://so-woon-1221.github.io/%EC%9D%8C%EC%95%85/%EB%85%B8%EB%9E%98%ED%85%8C%EC%8A%A4%ED%8A%B8/">
 
 
-  <meta property="og:description" content="쇼핑몰 - 서버에 데이터 전송하는 과정">
+  <meta property="og:description" content="음악 첫번째 글">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="https://so-woon-1221.github.io/shoppingmall/axios">
+<link rel="canonical" href="https://so-woon-1221.github.io/%EC%9D%8C%EC%95%85/%EB%85%B8%EB%9E%98%ED%85%8C%EC%8A%A4%ED%8A%B8/">
 
 
 
@@ -290,15 +290,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="쇼핑몰 - 서버 데이터 전송">
-    <meta itemprop="description" content="쇼핑몰 - 서버에 데이터 전송하는 과정">
+    <meta itemprop="headline" content="나이값">
+    <meta itemprop="description" content="음악 첫번째 글">
     <meta itemprop="datePublished" content="2021-02-15T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">쇼핑몰 - 서버 데이터 전송
+          <h1 id="page-title" class="page__title" itemprop="headline">나이값
 </h1>
           
 
@@ -320,7 +320,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          less than 1 minute read
         
       </span>
     
@@ -332,92 +332,23 @@
 
       <section class="page__content" itemprop="text">
         
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#1-개요">1. 개요</a></li><li><a href="#2-상세-설명">2. 상세 설명</a></li></ul>
+        <h2 id="나이값rpod-khalibeats">나이값(rpod. Khalibeats)</h2>
 
-            </nav>
-          </aside>
-        
-        <h2 id="1-개요">1. 개요</h2>
+<p>블로그에 하나 정도는 다른 주제의 포스트를 하고 싶어서 평상시 취미로 만드는 자작곡 중 하나를 올립니다.<br />
+사실 실력이 나쁘고 장비도 나쁘기 때문에 음질도 별로지만 꾸준히 음악을 하는 이유는<br />
+나를 표현하는데 이만한 것이 없다고 생각했기 떄문이다.<br />
+들어주는 사람은 없지만 그래도 스트레스 해소나 생각 정리에는 굉장히 도움이 된다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">axios</code>를 사용하여 백엔드와 통신한다.
-그러나 백엔드는 <code class="language-plaintext highlighter-rouge">Spring</code>으로 구성되어 8080포트를 사용하고 프론트엔드는 3000포트를 사용해<br />
-CORS 이슈가 발생하게 된다. 따라서 proxy 설정을 통 이를 해결한다.</p>
+<hr />
 
-<h2 id="2-상세-설명">2. 상세 설명</h2>
+<p>이번에 만든건 나이값이란 제목의 곡인데<br />
+그냥 항상 나는 너무 미성숙하고 나이값을 못하는 느낌이라 만들었다.<br />
+겉으로도 속으로도 어린애같은 내 자신이 좋지만은 않다.</p>
 
-<ul>
-  <li>package.json</li>
-</ul>
+<hr />
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">...</span><span class="w">
-  </span><span class="nl">"proxy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8080/"</span><span class="w">
-</span><span class="err">...</span><span class="w">
-</span></code></pre></div></div>
-
-<p>프록시 <code class="language-plaintext highlighter-rouge">proxy</code> 설정을 spirng의 포트인 8080으로 설정한다.</p>
-
-<ul>
-  <li>/lib/api/client.js</li>
-</ul>
-
-<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">axios</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span>
-
-<span class="k">export</span> <span class="k">default</span> <span class="nx">client</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">axios</code>를 import해서 client를 생성해준다.<br />
-client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설정해주었다.</p>
-
-<ul>
-  <li>/lib/api/items.js - 상품관련 api</li>
-</ul>
-
-<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">client</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./client</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="c1">// 상품 등록</span>
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">inputItems</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">thumbnail</span><span class="p">,</span> <span class="nx">tags</span> <span class="p">})</span> <span class="o">=&gt;</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/input</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">thumbnail</span><span class="p">,</span> <span class="nx">tags</span> <span class="p">});</span>
-
-<span class="c1">// 상품 상세 정보 확인</span>
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">readItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/item/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-
-<span class="c1">// 모든 상품 확인</span>
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">listItem</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/item</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="c1">// 상품 검색</span>
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">searchItem</span> <span class="o">=</span> <span class="p">(</span><span class="nx">keyword</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/search/</span><span class="p">${</span><span class="nx">keyword</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-
-</code></pre></div></div>
-
-<p>각 기능해서 쓰일 axios 요청을 설정했다.<br />
-백엔드에서 해당 기능을 처리할 수 있도록 구현해놓았다.</p>
-
-<ul>
-  <li>/lib/api/login.js - user 및 user 정보 관련 api</li>
-</ul>
-
-<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">client</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./client</span><span class="dl">'</span><span class="p">;</span>
-
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">loginUser</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span> <span class="p">})</span> <span class="o">=&gt;</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/login</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">password</span> <span class="p">});</span>
-
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">registerUser</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">image</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">cart</span> <span class="p">})</span> <span class="o">=&gt;</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/register</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">,</span> <span class="nx">image</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">cart</span> <span class="p">});</span>
-
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">registerCheck</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">email</span> <span class="p">})</span> <span class="o">=&gt;</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/register/check</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">email</span> <span class="p">});</span>
-
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">cartIn</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">itemId</span><span class="p">,</span> <span class="nx">user</span> <span class="p">})</span> <span class="o">=&gt;</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/user/cartIn</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">itemId</span><span class="p">,</span> <span class="nx">user</span> <span class="p">});</span>
-
-<span class="k">export</span> <span class="kd">const</span> <span class="nx">getCart</span> <span class="o">=</span> <span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s2">`/api/</span><span class="p">${</span><span class="nx">user</span><span class="p">}</span><span class="s2">/cart`</span><span class="p">);</span>
-
-</code></pre></div></div>
+<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/983300017&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
+<div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-368654404" title="1221" target="_blank" style="color: #cccccc; text-decoration: none;">1221</a> · <a href="https://soundcloud.com/user-368654404/prod-khalibeats" title="나이값(prod. Khalibeats)" target="_blank" style="color: #cccccc; text-decoration: none;">나이값(prod. Khalibeats)</a></div>
 
         
       </section>
@@ -438,15 +369,11 @@ client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설�
     
       
       
-      <a href="/tags/#shopping-mall" class="page__taxonomy-item" rel="tag">Shopping mall</a><span class="sep">, </span>
+      <a href="/tags/#%EC%9D%8C%EC%95%85" class="page__taxonomy-item" rel="tag">음악</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#%EC%87%BC%ED%95%91%EB%AA%B0" class="page__taxonomy-item" rel="tag">쇼핑몰</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8" class="page__taxonomy-item" rel="tag">프로젝트</a>
+      <a href="/tags/#%ED%9E%99%ED%95%A9" class="page__taxonomy-item" rel="tag">힙합</a>
     
     </span>
   </p>
@@ -467,7 +394,7 @@ client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설�
     
       
       
-      <a href="/categories/#shopping-mall" class="page__taxonomy-item" rel="tag">Shopping mall</a>
+      <a href="/categories/#%EC%9D%8C%EC%95%85" class="page__taxonomy-item" rel="tag">음악</a>
     
     </span>
   </p>
@@ -484,11 +411,12 @@ client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설�
       
   <nav class="pagination">
     
-      <a href="/%EC%9D%8C%EC%95%85/%EB%85%B8%EB%9E%98%ED%85%8C%EC%8A%A4%ED%8A%B8/" class="pagination--pager" title="나이값
+      <a href="/shoppingmall/insert" class="pagination--pager" title="쇼핑몰 - 상품등록
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/shoppingmall/axios" class="pagination--pager" title="쇼핑몰 - 서버 데이터 전송
+">Next</a>
     
   </nav>
 
@@ -512,7 +440,7 @@ client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설�
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/%EC%9D%8C%EC%95%85/%EB%85%B8%EB%9E%98%ED%85%8C%EC%8A%A4%ED%8A%B8/" rel="permalink">나이값
+        <a href="/shoppingmall/axios" rel="permalink">쇼핑몰 - 서버 데이터 전송
 </a>
       
     </h2>
@@ -536,14 +464,14 @@ client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설�
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          1 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">음악 첫번째 글
+    <p class="archive__item-excerpt" itemprop="description">쇼핑몰 - 서버에 데이터 전송하는 과정
 </p>
   </article>
 </div>
