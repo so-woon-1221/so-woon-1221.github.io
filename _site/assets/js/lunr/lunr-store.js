@@ -34,4 +34,10 @@ var store = [{
         "tags": ["Shopping mall","쇼핑몰","프로젝트"],
         "url": "https://so-woon-1221.github.io/shoppingmall/axios",
         "teaser": null
+      },{
+        "title": "쇼핑몰 - 메인화면",
+        "excerpt":"1. 화면구성 그리드뷰를 활용해서 3개씩 격자형태로 표시되게 했다. 각 항목들은 대표 이미지, 상품명, 가격, 태그를 갖고있다. 해당 아이템을 클릭할 시 제품 상세 페이지로 이동한다. 2. 상세 설명 modules/list.js import { createAction, handleActions } from 'redux-actions'; import createRequestSaga, { createRequestActionTypes, } from '../lib/createRequestSaga'; import * as itemAPI from '../lib/api/items'; import {...","categories": ["Shopping mall"],
+        "tags": ["Shopping mall","쇼핑몰","프로젝트"],
+        "url": "https://so-woon-1221.github.io/shoppingmall/mainpage",
+        "teaser": null
       }]

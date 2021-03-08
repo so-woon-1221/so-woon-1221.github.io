@@ -11,3 +11,4 @@ author_profile: true
 2. [ 쇼핑몰 - 서버와 데이터 교환](/shoppingmall/axios)
 3. [ 쇼핑몰 - 상품 등록](/shoppingmall/insert)
 4. [ 쇼핑몰 - 제품 상세 페이지](/shoppingmall/infopage)
+5. [ 쇼핑몰 - 메인화면](/shoppingmall/mainpage)
