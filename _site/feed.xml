@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://so-woon-1221.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://so-woon-1221.github.io/" rel="alternate" type="text/html" /><updated>2021-03-08T17:56:39+09:00</updated><id>https://so-woon-1221.github.io/feed.xml</id><title type="html">BLOG</title><subtitle>An amazing website.</subtitle><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><entry><title type="html">쇼핑몰 - 메인화면</title><link href="https://so-woon-1221.github.io/shoppingmall/mainpage" rel="alternate" type="text/html" title="쇼핑몰 - 메인화면" /><published>2021-03-08T00:00:00+09:00</published><updated>2021-03-08T00:00:00+09:00</updated><id>https://so-woon-1221.github.io/shoppingmall/%EC%87%BC%ED%95%91%EB%AA%B0-%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80</id><content type="html" xml:base="https://so-woon-1221.github.io/shoppingmall/mainpage">&lt;h2 id=&quot;1-화면구성&quot;&gt;1. 화면구성&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://so-woon-1221.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://so-woon-1221.github.io/" rel="alternate" type="text/html" /><updated>2021-03-08T17:58:45+09:00</updated><id>https://so-woon-1221.github.io/feed.xml</id><title type="html">BLOG</title><subtitle>An amazing website.</subtitle><author><name>Sowoon</name><email>janus7359@gmail.com</email></author><entry><title type="html">쇼핑몰 - 메인화면</title><link href="https://so-woon-1221.github.io/shoppingmall/mainpage" rel="alternate" type="text/html" title="쇼핑몰 - 메인화면" /><published>2021-03-08T00:00:00+09:00</published><updated>2021-03-08T00:00:00+09:00</updated><id>https://so-woon-1221.github.io/shoppingmall/%EC%87%BC%ED%95%91%EB%AA%B0-%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80</id><content type="html" xml:base="https://so-woon-1221.github.io/shoppingmall/mainpage">&lt;h2 id=&quot;1-화면구성&quot;&gt;1. 화면구성&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/image/shoppingmall-mainpage.png&quot; alt=&quot;UI&quot; /&gt;&lt;/p&gt;
 
@@ -735,7 +735,7 @@ client는 앞으로 각 기능 구현 시 계속 쓰일 것이므로 따로 설�
 &lt;ul&gt;
   &lt;li&gt;프론트엔드
     &lt;ul&gt;
-      &lt;li&gt;메인화면 구현&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;/shoppingmall/mainpage&quot;&gt;메인화면 구현&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;/shoppingmall/infopage&quot;&gt;제품 상세 페이지&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;/shoppingmall/insert&quot;&gt;상품 등록&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;로그인 및 회원가입&lt;/li&gt;
