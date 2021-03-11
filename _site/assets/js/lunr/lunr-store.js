@@ -46,4 +46,10 @@ var store = [{
         "tags": ["Shopping mall","쇼핑몰","프로젝트"],
         "url": "https://so-woon-1221.github.io/shoppingmall/backDB",
         "teaser": null
+      },{
+        "title": "또우니 논문",
+        "excerpt":"1. 개요 대학생 4학년 시절 졸업작품 및 공모전 제출작으로 또우니라는 실시간 아기 울음 분석 시스템을 개발했다. 개발 기간은 2018.03 ~ 2018.09 약 6개월로 담담한 파트는 아기 울음 분석 알고리즘 및 안드로이드 앱 개발이었다. 개발환경은 python(pycharm), android(android studio), firebase 등이다. 결과적으로 숭실대학교 소프트웨어 공모전에서 수상을 했다. 6개월동안 정말 치열하게 개발했고 공모전에서도...","categories": ["또우니"],
+        "tags": ["또우니","프로젝트"],
+        "url": "https://so-woon-1221.github.io/%EB%98%90%EC%9A%B0%EB%8B%88/%EB%98%90%EC%9A%B0%EB%8B%88-%EB%85%BC%EB%AC%B8/",
+        "teaser": null
       }]
