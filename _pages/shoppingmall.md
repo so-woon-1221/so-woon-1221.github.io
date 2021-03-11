@@ -12,3 +12,4 @@ author_profile: true
 3. [ 쇼핑몰 - 상품 등록](/shoppingmall/insert)
 4. [ 쇼핑몰 - 제품 상세 페이지](/shoppingmall/infopage)
 5. [ 쇼핑몰 - 메인화면](/shoppingmall/mainpage)
+6. [ 쇼핑몰 - DB구성](/shoppingmall/backDB)

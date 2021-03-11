@@ -1,9 +1,0 @@
-I"�<p>쇼핑몰을 제작하며 작성한 포스트들을 모아놓았습니다.</p>
-
-<ol>
-  <li><a href="/shoppingmallindex"> 쇼핑몰개요</a></li>
-  <li><a href="/shoppingmall/axios"> 쇼핑몰 - 서버와 데이터 교환</a></li>
-  <li><a href="/shoppingmall/insert"> 쇼핑몰 - 상품 등록</a></li>
-  <li><a href="/shoppingmall/infopage"> 쇼핑몰 - 제품 상세 페이지</a></li>
-</ol>
-:ET

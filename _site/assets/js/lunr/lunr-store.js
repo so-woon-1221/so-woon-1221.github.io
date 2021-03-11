@@ -40,4 +40,10 @@ var store = [{
         "tags": ["Shopping mall","쇼핑몰","프로젝트"],
         "url": "https://so-woon-1221.github.io/shoppingmall/mainpage",
         "teaser": null
+      },{
+        "title": "쇼핑몰 - DB 구성",
+        "excerpt":"1. 개요 DB는 Mongo DB를 활용하여 구성했다. Spring Boot에 포함되어있는 MongoDB를 gradle에 추가해준다. implementation ('org.springframework.boot:spring-boot-starter-data-mongodb') Web, Service, Repository로 계층을 구분하여 트랜잭션을 수행한다. 2. 상세 설명 domain/item/Items.java @Document(collection = \"items\") @Getter public class Items{ @Id private String id; private final String name; private final String content; private final String price; private...","categories": ["Shopping mall"],
+        "tags": ["Shopping mall","쇼핑몰","프로젝트"],
+        "url": "https://so-woon-1221.github.io/shoppingmall/backDB",
+        "teaser": null
       }]

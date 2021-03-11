@@ -1,6 +1,6 @@
-I"�(<h2 id="1-화면구성">1. 화면구성</h2>
+I"#A<h2 id="1-화면구성">1. 화면구성</h2>
 
-<p><img src="/assets/image/shoppingmall-mainpage.png" alt="UI" /></p>
+<p><img src="/assets/image/shoppingmall-mainpage.jpeg" alt="UI" /></p>
 
 <p>그리드뷰를 활용해서 3개씩 격자형태로 표시되게 했다.<br />
 각 항목들은 대표 이미지, 상품명, 가격, 태그를 갖고있다.<br />
@@ -86,6 +86,59 @@
 <span class="k">export</span> <span class="k">default</span> <span class="nx">withRouter</span><span class="p">(</span><span class="nx">ItemListViewerContainer</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>페이지에 접속하는 순간 <code class="language-plaintext highlighter-rouge">listItems()</code>가 실행된다. <br />
+<p>페이지에 접속하는 순간 <code class="language-plaintext highlighter-rouge">listItems()</code>가 실행된다.<br />
 그래서 반환되는 데이터를 <code class="language-plaintext highlighter-rouge">items</code>에 넘겨 <code class="language-plaintext highlighter-rouge">ItemListViewer</code>에 전달한다.</p>
+
+<ul>
+  <li>components/viewer/ItemListViewer.js</li>
+</ul>
+
+<div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+
+<span class="kd">const</span> <span class="nx">ListItem</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">item</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">thumbnail</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">tags</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">item</span><span class="p">;</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Item</span> <span class="na">to</span><span class="p">=</span><span class="si">{</span><span class="s2">`/item/</span><span class="p">${</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ItemImage</span> <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="nx">thumbnail</span><span class="si">}</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ItemInfo</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">name</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">price</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="si">{</span><span class="nx">tags</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">tag</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+          <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>#<span class="si">{</span><span class="nx">tag</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">))</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nc">ItemInfo</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Item</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">ItemListViewer</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">loading</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">items</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nc">ItemListViewBlock</span><span class="p">&gt;</span>에러가 발생했습니다.<span class="p">&lt;/</span><span class="nc">ItemListViewBlock</span><span class="p">&gt;;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ItemListViewBlock</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">ItemListViewWrapper</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">ItemListView</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="dl">'</span><span class="s1">container</span><span class="dl">'</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="o">!</span><span class="nx">loading</span> <span class="o">&amp;&amp;</span> <span class="nx">items</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+              <span class="p">&lt;&gt;</span>
+                <span class="si">{</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                  <span class="p">&lt;</span><span class="nc">ListItem</span> <span class="na">item</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="si">}</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">))</span><span class="si">}</span>
+              <span class="p">&lt;/&gt;</span>
+            <span class="p">)</span><span class="si">}</span>
+          <span class="p">&lt;/</span><span class="nc">ItemListView</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">ItemListViewWrapper</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nc">ItemListViewBlock</span><span class="p">&gt;</span>
+    <span class="p">&lt;/&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ItemListViewerContainer</code>에서 받아온 <code class="language-plaintext highlighter-rouge">items</code>를 <code class="language-plaintext highlighter-rouge">map</code>을 활용해 <code class="language-plaintext highlighter-rouge">ListItem</code>에 넘겨준다.<br />
+<code class="language-plaintext highlighter-rouge">ListItem</code>은 컴포넌트 자체가 Link로 되어있어 클릭하면 해당 상세페이지로 이동하고<br />
+대표 이미지와 상품명, 가격, 태그를 보여준다.</p>
 :ET

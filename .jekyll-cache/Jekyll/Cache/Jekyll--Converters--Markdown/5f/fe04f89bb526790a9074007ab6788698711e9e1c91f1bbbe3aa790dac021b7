@@ -1,4 +1,4 @@
-I"k	<p>링크<br />
+I"�	<p>링크<br />
 <a href="https://github.com/so-woon-1221/ShoppingMall">Github</a></p>
 
 <h2 id="1-계기">1. 계기</h2>
@@ -37,7 +37,7 @@
   </li>
   <li>백엔드
     <ul>
-      <li>DB구성</li>
+      <li><a href="/shoppingmall/backDB">DB구성</a></li>
     </ul>
   </li>
 </ul>
